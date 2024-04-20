@@ -15,9 +15,7 @@
         android:layout_marginBottom="60dp"
         android:text="next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView_result"
@@ -56,5 +54,14 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView_result"
         app:layout_constraintStart_toStartOf="@+id/imageView_result"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_share"
+        android:layout_width="140dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="60dp"
+        android:text="share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

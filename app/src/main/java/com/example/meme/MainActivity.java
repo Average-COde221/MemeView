@@ -1,8 +1,10 @@
 package com.example.meme;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.service.chooser.ChooserAction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView imageView_result;
     Button button_next;
+    Button button_share;
     ProgressBar progress_bar;
     String url;
 
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         button_next=findViewById(R.id.button_next);
+        button_share=findViewById(R.id.button_share);
         progress_bar=findViewById(R.id.progress_bar);
         imageView_result=findViewById(R.id.imageView_result);
         button_next.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
                 loadMeme();
             }
         });
+        button_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareMeme();
+            }
+        });
+
 
     }
     private void loadMeme(){
@@ -102,6 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
 // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private void shareMeme(){
+
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("text/json");
+        intent.putExtra(Intent.EXTRA_TEXT,"checkout this meme");
+        intent.putExtra(Intent.EXTRA_TEXT,url);
+        Intent chooserAction=Intent.createChooser(intent,"share using...");
+        startActivity(chooserAction);
     }
 
 }
